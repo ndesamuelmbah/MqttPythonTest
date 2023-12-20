@@ -8,7 +8,11 @@ from typing import Any
 def on_message(client: mqtt.Client, userdata: Any, message: mqtt.MQTTMessage):
     #Print te client username
     print(f"topic type is {message.topic}") #
-    print(f"timestamp type is {message.timestamp}") #
+    print(f"timestamp is {message.timestamp}") #
+    print(f"message_id is {message.mid}") #
+    print(f"qos is {message.qos}")
+    print(f"dup is {message.dup}")
+    print(f"retain is {message.retain}")
 
     payload = message.payload.decode("utf-8")
     try:
