@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 import time, json
+from datetime import datetime
 from constants import topic_AllTOPICS, device_smart_phone
 from mqtt_helpers import create_client
 from store_in_mysql_database import store_in_my_sql_database
@@ -13,12 +14,12 @@ def on_message(client: mqtt.Client, userdata: Any, message: mqtt.MQTTMessage):
     print(f"qos is {message.qos}")
     print(f"dup is {message.dup}")
     print(f"retain is {message.retain}")
-
+    timestamp = datetime.now()
     payload = message.payload.decode("utf-8")
     try:
         topic = message.topic
         data = json.loads(payload)
-        store_in_my_sql_database(topic, payload)
+        store_in_my_sql_database(topic, payload, timestamp=timestamp)
     except Exception as e:
         print(f"Could not convert payload to json {e}")
 

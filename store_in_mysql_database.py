@@ -8,11 +8,11 @@ from constants import IS_ON_WINDOWS
 #     payload VARCHAR(1000),
 #     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 # );
-def store_in_my_sql_database(topic, payload):
+def store_in_my_sql_database(topic, payload, timestamp):
     try:
         if not IS_ON_WINDOWS:
-            query = "INSERT INTO TestData (topic, payload) VALUES (%s, %s)"
-            values = (topic, payload)
+            query = "INSERT INTO TestData (topic, payload, createdAt) VALUES (%s, %s)"
+            values = (topic, payload, timestamp)
 
             mysql_conn = create_database_connection()
             mysql_cursor = mysql_conn.cursor()
