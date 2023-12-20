@@ -1,3 +1,5 @@
 broker_subscriber_cert_details.log
 *.conf
 *.txt
+*.json
+*.pyc
