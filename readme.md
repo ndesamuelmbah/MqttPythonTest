@@ -1,2 +1,7 @@
 Playing around with Python MQTT client Paho-MQTT and Mosquitto MQTT broker.
-You find a detailed explanation of the code and MQTT basics on medium: https://medium.com/@codeanddogs/mqtt-basics-with-python-examples-7c758e605d4
+To use this, first set your broker ip address in `constants.py`
+In my case, I was testing on windows and my broker was running on linux-ubuntu at a different ip address.
+So I had saved my ip address in an environment variable called
+`BROKER_IP_ADDRESS`
+And when I needed to test on the broker itself, I used the locahost saved in environment variables as
+`LOCALHOST`
