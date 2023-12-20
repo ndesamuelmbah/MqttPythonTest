@@ -11,7 +11,7 @@ from constants import IS_ON_WINDOWS
 def store_in_my_sql_database(topic, payload, timestamp):
     try:
         if not IS_ON_WINDOWS:
-            query = "INSERT INTO TestData (topic, payload, createdAt) VALUES (%s, %s)"
+            query = "INSERT INTO TestData (topic, payload, createdAt) VALUES (%s, %s, %s)"
             values = (topic, payload, timestamp)
 
             mysql_conn = create_database_connection()
