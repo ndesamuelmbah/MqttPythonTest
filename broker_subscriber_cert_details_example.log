@@ -1,0 +1,17 @@
+your_user_name@your_broker_server_name:~$ openssl genpkey -algorithm RSA -out ca.key
+...............+++++
+.........................+++++
+your_user_name@your_broker_server_name:~$ openssl req -new -x509 -key ca.key -out ca.crtYou are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:State
+Locality Name (eg, city) []:City
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:My Device Trackers LLC
+Organizational Unit Name (eg, section) []:Engineering
+Common Name (e.g. server FQDN or YOUR name) []:Firstname LastName
+Email Address []:example@email.com
