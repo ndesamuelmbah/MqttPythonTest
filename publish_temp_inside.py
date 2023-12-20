@@ -9,7 +9,7 @@ print(args)
 if len(args) > 1:
     username = args[1]
     port = 8883
-client = create_client(inside_temperature, username=username, port=port)
+client = create_client(client_id=inside_temperature, username=username, port=port)
 print(f"client is {client}")
 
 #get the environment variable APP_DOMAIN and store it in a variable app_domain
@@ -19,7 +19,7 @@ haspublished = False
 while not haspublished and published_attempts < 6 :
     outside_temperature = uniform(20.0, 21.0)
     payload = json.dumps({'publishedAttempts':published_attempts, "outsideTemperature": outside_temperature})
-    mqtt_message_info = client.publish(topic = location_updates, payload=f'''{payload}''', properties = {'publishedAttempts':published_attempts}, qos=0) #mqtt.MQTTMessageInfo
+    mqtt_message_info = client.publish(topic = topic_temperature, payload=f'''{payload}''', properties = {'publishedAttempts':published_attempts}, qos=0) #mqtt.MQTTMessageInfo
     haspublished = mqtt_message_info.rc == 0
     print(f" Was publish successful {haspublished}")
     # print(f"Published temperature inside of '{outside_temperature}' to topic '{topic_temperature}' with outcome [mid,rc] {[mqtt_message_info.mid, mqtt_message_info.rc]}")
